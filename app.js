@@ -46,6 +46,25 @@ app.get('/', (req, res, next) => {
   res.render('home-page-view.ejs');
 });
 
+
+// STEP #1 of our search form submission
+app.get('/search', (req, res, next) => {
+  // display "views/search-form-view.ejs"
+  res.render('search-form-view.ejs');
+});
+
+// STEP #2 of our search form submission
+// <form method="get" action="/results">
+//                |               |
+//   --------------               |
+//   |       ----------------------
+//   |       |
+app.get('/results', (req, res, next) => {
+
+  // display "views/results-view.ejs"
+  res.render('results-view.ejs');
+});
+
 // HERE GO ROUTES ☝︎☝︎☝︎ --------------------------------------------------------
 
 

@@ -1,0 +1,28 @@
+<h2> Search </h2>
+
+<p>
+  This is <b> Step #1 </b> of a form submission process
+  (display a form to the user).
+</p>
+
+<!--
+ which VERB to use the in the submission request
+        |
+        |    URL (address) to submit to
+        |             |                                                      -->
+<form method="get" action="/results">
+<!--           |               |
+          app.get(        '/results', (...) =>                               -->
+  <label for="search-term-input"> Search the Web </label>
+  <input  id="search-term-input" type="search">
+  <br>
+
+  <input  id="interest-box" type="checkbox">
+  <label for="interest-box"> Interested in Pizza? </label>
+  <br>
+
+  <button> Search NOW! </button>
+
+  <!-- <input type="submit" value="Search NOW!">
+    this would also work instead of the button tag -->
+</form>
