@@ -39,6 +39,16 @@ app.set('layout', 'layout.ejs');
 
 
 
+// POST BODY PARSER RELATED STUFF ↧↧↧ -----------------------------------------
+
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// STUFF RELATED TO POST BODY PARSING ↥↥↥ -------------------------------------
+
+
+
 // ROUTES GO HERE ☟☟☟ --------------------------------------------------------
 
 app.get('/', (req, res, next) => {
@@ -105,7 +115,20 @@ app.get('/login', (req, res, next) => {
 //   |       -------------------------
 //   |       |
 app.post('/check-login', (req, res, next) => {
-  res.render('go-away-view.ejs');
+             // <input name="emailValue">
+             //                  |
+  const userEmail = req.body.emailValue;
+  const userPass = req.body.passwordValue;
+            //                   |
+            // <input name="passwordValue">
+
+  if (userEmail === 'a@a.a' && userPass === 'swordfish') {
+    res.render('welcome-view.ejs');
+  }
+
+  else {
+    res.render('go-away-view.ejs');
+  }
 });
 
 // HERE GO ROUTES ☝︎☝︎☝︎ --------------------------------------------------------
