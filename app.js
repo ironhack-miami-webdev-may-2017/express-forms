@@ -62,6 +62,12 @@ app.get('/search', (req, res, next) => {
 app.get('/results', (req, res, next) => {
   // req.query refers to the data in the "query string"  ( ?food=pizza&price=888 )
 
+  // With a query string like "?searchTerm=best+computer&interestThing=on" you get:
+  // req.query = {
+  //   searchTerm: 'best computer',
+  //   interestThing: 'on'
+  // }
+
            // <input name="searchTerm">
            //                   |
   const myTerm = req.query.searchTerm;
@@ -82,6 +88,24 @@ app.get('/results', (req, res, next) => {
       theSearch: myTerm
     });
   }
+});
+
+
+
+// STEP #1 of our LOGIN form submission
+app.get('/login', (req, res, next) => {
+  // display "views/login-form-view.ejs"
+  res.render('login-form-view.ejs');
+});
+
+// STEP #2 of our LOGIN form submission
+// <form method="post" action="/check-login">
+//                |                  |
+//   --------------                  |
+//   |       -------------------------
+//   |       |
+app.post('/check-login', (req, res, next) => {
+  res.render('go-away-view.ejs');
 });
 
 // HERE GO ROUTES ☝︎☝︎☝︎ --------------------------------------------------------
