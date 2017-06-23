@@ -60,9 +60,28 @@ app.get('/search', (req, res, next) => {
 //   |       ----------------------
 //   |       |
 app.get('/results', (req, res, next) => {
+  // req.query refers to the data in the "query string"  ( ?food=pizza&price=888 )
 
-  // display "views/results-view.ejs"
-  res.render('results-view.ejs');
+           // <input name="searchTerm">
+           //                   |
+  const myTerm = req.query.searchTerm;
+  const myCheckbox = req.query.interestThing;
+               //                    |
+               // <input name="interestThing">
+
+  if (myCheckbox === 'on') {
+    // display "views/pizza-results.ejs"
+    res.render('pizza-results.ejs', {
+      theSearch: myTerm
+    });
+  }
+
+  else {
+    // display "views/results-view.ejs"
+    res.render('results-view.ejs', {
+      theSearch: myTerm
+    });
+  }
 });
 
 // HERE GO ROUTES ☝︎☝︎☝︎ --------------------------------------------------------
