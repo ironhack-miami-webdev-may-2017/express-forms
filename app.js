@@ -16,6 +16,23 @@ app.set('views', 'views');
 app.set('view engine', 'ejs');
 
 
+
+// Morgan middleware
+const morgan = require('morgan');
+
+// console.logs information about the connection
+app.use(morgan('dev'));
+
+
+app.use((req, res, next) => {
+  console.log('OUR MIDDLEWARE 🤖🎩');
+
+  req.pizza = '🍕🍪🇵🇷';
+
+  next();
+});
+
+
 // tells Express that our static files are inside the "public/" folder
 app.use(express.static('public'));
 
@@ -59,6 +76,10 @@ app.get('/', (req, res, next) => {
 
 // STEP #1 of our search form submission
 app.get('/search', (req, res, next) => {
+  console.log('In the /search route ' + req.pizza);
+                      //                    |
+                      // comes from the middleware on line 30
+
   // display "views/search-form-view.ejs"
   res.render('search-form-view.ejs');
 });
